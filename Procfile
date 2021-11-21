@@ -1,1 +1,1 @@
-web: gunicorn nome_aplicacao.wsgi
+web: gunicorn api_home.wsgi
