@@ -30,6 +30,8 @@ from rest_framework.routers import DefaultRouter
 
 from django.urls import include, path
 from rest_framework import routers
+from django.conf import settings # Necessario para configurar MEDIA_URL
+from django.conf.urls.static import static # Necessario para configurar MEDIA_URL
 
 app_name = 'api_home'
 
