@@ -7,11 +7,11 @@ class ResumoSerializer(serializers.Serializer):
     id = serializers.CharField(max_length=100, read_only=True)
     company = serializers.CharField(max_length=100)
     occupation = serializers.CharField(max_length=100)
-    activities = serializers.CharField()
-    tags = serializers.CharField()
+    activities = serializers.CharField(max_length=200)
+    tags = serializers.CharField(max_length=200)
     start_date = serializers.DateTimeField()
     departure_date = serializers.DateTimeField()
-
+    
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User

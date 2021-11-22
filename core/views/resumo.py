@@ -1,12 +1,11 @@
-from rest_framework.exceptions import NotFound
+import requests
 from core.api.firebase_client import FirebaseClient
 from core.api.serializers import ResumoSerializer, UserSerializer, GroupSerializer
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import api_view
 
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
 from rest_framework import permissions
 
 # Create your views here.
@@ -19,7 +18,7 @@ class ResumoViewSet(viewsets.ViewSet):
         serializer = ResumoSerializer(r, many=True)
         return Response(serializer.data)
     
-    @login_required(login_url='/login/')
+    # @login_required(login_url='/login/')
     def retrieve(self, request, pk=None):
         resumo = self.client.get_by_id(pk)
 
@@ -27,18 +26,19 @@ class ResumoViewSet(viewsets.ViewSet):
             serializer = ResumoSerializer(resumo)
             return Response(serializer.data)
 
-    @login_required(login_url='/login/')
-    def create(self, request, *args, **kwargs):
+    # @login_required(login_url='/login/')
+    def create(self, request):
         serializer = ResumoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        serializer.is_valid()
 
         self.client.create(serializer.data)
+
         return Response(
             serializer.data,
             status=status.HTTP_201_CREATED
         )
 
-    @login_required(login_url='/login/')
+    # @login_required(login_url='/login/')
     def update(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         serializer = ResumoSerializer(data=request.data)
@@ -48,7 +48,7 @@ class ResumoViewSet(viewsets.ViewSet):
 
         return Response(serializer.data)
 
-    @login_required(login_url='/login/')
+    # @login_required(login_url='/login/')
     def destroy(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         self.client.delete_by_id(pk)
