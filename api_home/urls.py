@@ -30,8 +30,6 @@ from rest_framework.routers import DefaultRouter
 
 from django.urls import include, path
 from rest_framework import routers
-from django.conf import settings # Necessario para configurar MEDIA_URL
-from django.conf.urls.static import static # Necessario para configurar MEDIA_URL
 
 app_name = 'api_home'
 
@@ -45,4 +43,4 @@ urlpatterns = [
     # router.urls
     path('', include(router.urls)), # Route resumo/
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')) # Route autentication = api-auth/login/ login = users/login/ logout = users/logout/
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
