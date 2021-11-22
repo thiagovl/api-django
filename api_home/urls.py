@@ -45,4 +45,4 @@ urlpatterns = [
     # router.urls
     path('', include(router.urls)), # Route resumo/
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')) # Route autentication = api-auth/login/ login = users/login/ logout = users/logout/
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
