@@ -16,7 +16,7 @@ class FirebaseClient:
         
 
         self._db = firestore.client()
-        self._collection = self._db.collection('resumo') # evento é o nome da coleção
+        self._collection = self._db.collection('collection_professional_experience') # evento é o nome da coleção
   
     # GET ALL RESUMO
     def all(self):
@@ -44,6 +44,7 @@ class FirebaseClient:
             'id': id,
             'company': data['company'],
             'occupation': data['occupation'],
+            'briefsummary': data['briefsummary'],
             'activities': data['activities'],
             'tags': data['tags'].split(),
             'start_date': data['start_date'],
@@ -59,6 +60,7 @@ class FirebaseClient:
             'id': id,
             'company': data['company'],
             'occupation': data['occupation'],
+            'briefsummary': data['briefsummary'],
             'activities': data['activities'],
             'tags': data['tags'].split(),
             'start_date': data['start_date'],

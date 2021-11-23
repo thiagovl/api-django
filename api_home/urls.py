@@ -25,7 +25,7 @@ urlpatterns = [
 ]
 """
 
-from core.views import resumo
+from core.views import professional_experience
 from rest_framework.routers import DefaultRouter
 
 from django.urls import include, path
@@ -34,10 +34,10 @@ from rest_framework import routers
 app_name = 'api_home'
 
 router = DefaultRouter()
-router.register(r'resumo', resumo.ResumoViewSet, basename='resumo')
+router.register(r'professional_experience', professional_experience.ResumoViewSet, basename='professional_experience')
 
-router.register(r'users', resumo.UserViewSet)
-router.register(r'groups', resumo.GroupViewSet)
+router.register(r'users', professional_experience.UserViewSet)
+router.register(r'groups', professional_experience.GroupViewSet)
 
 urlpatterns = [
     # router.urls

@@ -5,10 +5,11 @@ from rest_framework import serializers
 
 class ResumoSerializer(serializers.Serializer):
     id = serializers.CharField(max_length=100, read_only=True)
-    company = serializers.CharField(max_length=100)
-    occupation = serializers.CharField(max_length=100)
-    activities = serializers.CharField(max_length=200)
-    tags = serializers.CharField(max_length=200)
+    company = serializers.CharField()
+    occupation = serializers.CharField()
+    briefsummary = serializers.CharField()
+    activities = serializers.CharField()
+    tags = serializers.CharField()
     start_date = serializers.DateTimeField()
     departure_date = serializers.DateTimeField()
     
